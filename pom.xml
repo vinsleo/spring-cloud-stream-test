@@ -62,15 +62,23 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-stream-test-support</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka-test</artifactId>
 			<version>2.2.0.BUILD-SNAPSHOT</version>
 		</dependency>
+
+		<!--
+		This Library provides the TestSupportBinder
+		which has precedence over All binders (in this case kafka-streams-binder and kafka-binder)
+		That is fine as long as not dealing with KStream
+		Once your Bindings are using KStream and not MessageChannels anymore this Binder doesn't work
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream-test-support</artifactId>
+			<scope>test</scope>
+		</dependency>
+		-->
 	</dependencies>
 
 	<dependencyManagement>

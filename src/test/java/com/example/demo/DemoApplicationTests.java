@@ -70,6 +70,7 @@ public class DemoApplicationTests {
 		KafkaTemplate<Integer, String> template = new KafkaTemplate<>(pf, true);
 		template.setDefaultTopic("foos");
 		template.sendDefault("{\"id\":\"123\"}");
+
 		ConsumerRecord<Integer, String> cr = KafkaTestUtils.getSingleRecord(consumer, "counts-id");
 
 		assertThat(cr.key()).isEqualTo(123);
